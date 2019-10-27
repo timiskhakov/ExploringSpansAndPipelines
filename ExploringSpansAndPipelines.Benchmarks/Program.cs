@@ -7,7 +7,7 @@ namespace ExploringSpansAndIOPipelines.Benchmarks
     {
         private static void Main()
         {
-            //BenchmarkRunner.Run<LineParsersComparision>();
+            //BenchmarkRunner.Run<LineParsersComparison>();
             BenchmarkRunner.Run<FileParsersComparison>();
         }
     }

@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringSpansAndIOPipelines.Core", "ExploringSpansAndIOPipelines.Core\ExploringSpansAndIOPipelines.Core.csproj", "{6833AF25-E2C5-4668-8028-22FE73BE5BCB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringSpansAndPipelines.Core", "ExploringSpansAndPipelines.Core\ExploringSpansAndPipelines.Core.csproj", "{6833AF25-E2C5-4668-8028-22FE73BE5BCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringSpansAndIOPipelines.Core.Tests", "ExploringSpansAndIOPipelines.Core.Tests\ExploringSpansAndIOPipelines.Core.Tests.csproj", "{57E9EA95-FDAC-4D52-AEA1-DE6E59D2324E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringSpansAndPipelines.Core.Tests", "ExploringSpansAndPipelines.Core.Tests\ExploringSpansAndPipelines.Core.Tests.csproj", "{57E9EA95-FDAC-4D52-AEA1-DE6E59D2324E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringSpansAndIOPipelines.Benchmarks", "ExploringSpansAndIOPipelines.Benchmarks\ExploringSpansAndIOPipelines.Benchmarks.csproj", "{C0A792D7-1BF3-4C42-9ECF-C0748B642565}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringSpansAndPipelines.Benchmarks", "ExploringSpansAndPipelines.Benchmarks\ExploringSpansAndPipelines.Benchmarks.csproj", "{C0A792D7-1BF3-4C42-9ECF-C0748B642565}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

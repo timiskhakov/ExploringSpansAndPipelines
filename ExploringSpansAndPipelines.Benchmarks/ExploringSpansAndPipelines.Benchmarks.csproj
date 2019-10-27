@@ -3,11 +3,8 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.0</TargetFramework>
+        <RootNamespace>ExploringSpansAndIOPipelines.Benchmarks</RootNamespace>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\ExploringSpansAndIOPipelines.Core\ExploringSpansAndIOPipelines.Core.csproj" />
-    </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="BenchmarkDotNet" Version="0.12.0" />
@@ -21,6 +18,10 @@
       <None Update="Assets\BenchmarkData.psv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ExploringSpansAndPipelines.Core\ExploringSpansAndPipelines.Core.csproj" />
     </ItemGroup>
 
 </Project>

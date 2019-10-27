@@ -1,1 +1,1 @@
-# Exploring `Span<T>` and `IO.Pipelines`
+# Exploring `Span<T>` and `Pipelines`

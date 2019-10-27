@@ -23,7 +23,7 @@ namespace ExploringSpansAndIOPipelines.Core.Tests.FileParserSpansAndPipesTests
         public async Task ShouldReturnVideogames()
         {
             // Arrange
-            var fileParserSpansAndPipes = new FileParserSpansAndPipes();
+            var fileParserSpansAndPipes = new FileParserSpansAndPipelines();
 
             // Act
             var videogames = await fileParserSpansAndPipes.Parse(_file);

@@ -4,6 +4,8 @@
         <TargetFramework>netcoreapp3.0</TargetFramework>
 
         <IsPackable>false</IsPackable>
+
+        <RootNamespace>ExploringSpansAndIOPipelines.Core.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,13 +16,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ExploringSpansAndIOPipelines.Core\ExploringSpansAndIOPipelines.Core.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Update="Assets\TestData.psv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ExploringSpansAndPipelines.Core\ExploringSpansAndPipelines.Core.csproj" />
     </ItemGroup>
 
 </Project>

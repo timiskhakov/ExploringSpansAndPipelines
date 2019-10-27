@@ -10,7 +10,7 @@ using ExploringSpansAndIOPipelines.Core.Models;
 
 namespace ExploringSpansAndIOPipelines.Core.Parsers
 {
-    public class FileParserSpansAndPipes : IFileParser
+    public class FileParserSpansAndPipelines : IFileParser
     {
         public async Task<List<Videogame>> Parse(string file)
         {

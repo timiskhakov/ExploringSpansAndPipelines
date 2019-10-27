@@ -44,7 +44,7 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
             position = span.Slice(scanned, span.Length - scanned).IndexOf('|');
             if (position < 0)
             {
-                position = span.Slice(scanned, span.Length - scanned).Length;;
+                position = span.Slice(scanned, span.Length - scanned).Length;
             }
             
             return span.Slice(scanned, position);

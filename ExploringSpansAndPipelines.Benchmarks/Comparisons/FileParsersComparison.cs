@@ -24,7 +24,7 @@ namespace ExploringSpansAndIOPipelines.Benchmarks.Comparisons
             
             _fileParser = new FileParser(new LineParser());
             _fileParserSpans = new FileParser(new LineParserSpans());
-            _fileParserSpansAndPipes = new FileParserSpansAndPipes();
+            _fileParserSpansAndPipes = new FileParserSpansAndPipelines();
         }
         
         [Benchmark]
