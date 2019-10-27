@@ -5,10 +5,10 @@ using BenchmarkDotNet.Engines;
 using ExploringSpansAndIOPipelines.Core.Interfaces;
 using ExploringSpansAndIOPipelines.Core.Parsers;
 
-namespace ExploringSpansAndIOPipelines.Benchmarks.Comparisions
+namespace ExploringSpansAndIOPipelines.Benchmarks.Comparisons
 {
     [MemoryDiagnoser]
-    public class FileParsersComparision
+    public class FileParsersComparison
     {
         private readonly Consumer _consumer = new Consumer();
         private string _file;

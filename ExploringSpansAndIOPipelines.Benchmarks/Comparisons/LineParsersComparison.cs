@@ -2,10 +2,10 @@ using BenchmarkDotNet.Attributes;
 using ExploringSpansAndIOPipelines.Core.Interfaces;
 using ExploringSpansAndIOPipelines.Core.Parsers;
 
-namespace ExploringSpansAndIOPipelines.Benchmarks.Comparisions
+namespace ExploringSpansAndIOPipelines.Benchmarks.Comparisons
 {
     [MemoryDiagnoser]
-    public class LineParsersComparision
+    public class LineParsersComparison
     {
         private const string Line = "38e27dea-1d7d-4279-be97-e29d53a8af89|F.E.A.R.|4|2005-10-18|90|False";
         
