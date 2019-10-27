@@ -6,7 +6,7 @@ using ExploringSpansAndIOPipelines.Core.Models;
 
 namespace ExploringSpansAndIOPipelines.Core.Parsers
 {
-    public class FileParser
+    public class FileParser : IFileParser
     {
         private readonly ILineParser _lineParser;
         

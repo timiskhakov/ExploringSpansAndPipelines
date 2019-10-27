@@ -2,6 +2,7 @@ using System.IO;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Engines;
+using ExploringSpansAndIOPipelines.Core.Interfaces;
 using ExploringSpansAndIOPipelines.Core.Parsers;
 
 namespace ExploringSpansAndIOPipelines.Benchmarks.Comparisions
@@ -9,10 +10,10 @@ namespace ExploringSpansAndIOPipelines.Benchmarks.Comparisions
     [MemoryDiagnoser]
     public class FileParsersComparision
     {
+        private readonly Consumer _consumer = new Consumer();
         private string _file;
-        private FileParser _fileParser;
-        private FileParser _fileParserSpans;
-        private Consumer _consumer = new Consumer();
+        private IFileParser _fileParser;
+        private IFileParser _fileParserSpans;
 
         [GlobalSetup]
         public void Setup()
