@@ -13,4 +13,14 @@
       <PackageReference Include="BenchmarkDotNet" Version="0.12.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Assets" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Assets\BenchmarkData.psv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

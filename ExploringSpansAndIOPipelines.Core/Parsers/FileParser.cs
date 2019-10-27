@@ -15,7 +15,7 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
             _lineParser = lineParser;
         }
         
-        public async Task<List<Videogame>> ParseFile(string file)
+        public async Task<List<Videogame>> Parse(string file)
         {
             var videogames = new List<Videogame>();
 

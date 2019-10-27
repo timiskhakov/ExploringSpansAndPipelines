@@ -23,11 +23,10 @@ namespace ExploringSpansAndIOPipelines.Core.Tests.FileParserTests
         public async Task UsingLineParser_ShouldReturnVideogames()
         {
             // Arrange
-            var lineParser = new LineParser();
-            var fileParser = new FileParser(lineParser);
+            var fileParser = new FileParser(new LineParser());
 
             // Act
-            var videogames = await fileParser.ParseFile(_file);
+            var videogames = await fileParser.Parse(_file);
 
             // Assert
             CollectionAssert.AreEqual(TestData.Videogames, videogames, new RecursiveComparer());
@@ -37,11 +36,10 @@ namespace ExploringSpansAndIOPipelines.Core.Tests.FileParserTests
         public async Task UsingLineParserSpans_ShouldReturnVideogames()
         {
             // Arrange
-            var lineParserSpans = new LineParserSpans();
-            var fileParser = new FileParser(lineParserSpans);
+            var fileParser = new FileParser(new LineParserSpans());
 
             // Act
-            var videogames = await fileParser.ParseFile(_file);
+            var videogames = await fileParser.Parse(_file);
 
             // Assert
             CollectionAssert.AreEqual(TestData.Videogames, videogames, new RecursiveComparer());
