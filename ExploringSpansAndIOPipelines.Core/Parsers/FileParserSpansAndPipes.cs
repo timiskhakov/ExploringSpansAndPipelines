@@ -25,8 +25,8 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
                     var buffer = read.Buffer;
                     while (TryReadLine(ref buffer, out var sequence))
                     {
-                        var videogames = ProcessSequence(sequence);
-                        result.AddRange(videogames);
+                        var videogame = ProcessSequence(sequence);
+                        result.Add(videogame);
                     }
                     
                     reader.AdvanceTo(buffer.Start, buffer.End);
@@ -55,22 +55,40 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
             return true;
         }
         
-        private static IEnumerable<Videogame> ProcessSequence(ReadOnlySequence<byte> sequence)
+        private static Videogame ProcessSequence(ReadOnlySequence<byte> sequence)
         {
-            if (!sequence.IsSingleSegment)
+            if (sequence.IsSingleSegment)
             {
-                yield break;
+                return Parse(sequence.FirstSpan);
             }
-
-            #if DEBUG
-            Span<char> span = new char[sequence.FirstSpan.Length];
-            #else
-            Span<char> span = stackalloc char[sequence.FirstSpan.Length];
-            #endif
             
-            Encoding.UTF8.GetChars(sequence.FirstSpan, span);
+#if DEBUG
+            Span<byte> span = new byte[sequence.Length];
+#else 
+            Span<byte> span = stackalloc byte[(int)sequence.Length];
+#endif
+            sequence.CopyTo(span);
+            
+#if DEBUG
+            Span<char> chars = new char[span.Length];
+#else 
+            Span<char> chars = stackalloc char[span.Length];
+#endif    
+            Encoding.UTF8.GetChars(span, chars);
                 
-            yield return LineParserSpans.Parse(span);
+            return Parse(span);
+        }
+
+        private static Videogame Parse(ReadOnlySpan<byte> bytes)
+        {
+#if DEBUG
+            Span<char> chars = new char[bytes.Length];
+#else
+            Span<char> chars = stackalloc char[bytes.Length];
+#endif
+            Encoding.UTF8.GetChars(bytes, chars);
+                
+            return LineParserSpans.Parse(chars);
         }
     }
 }
