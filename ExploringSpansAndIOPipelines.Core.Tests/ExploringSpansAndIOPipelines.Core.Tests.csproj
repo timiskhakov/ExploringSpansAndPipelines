@@ -18,7 +18,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Assets" />
+      <None Update="Assets\TestData.psv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

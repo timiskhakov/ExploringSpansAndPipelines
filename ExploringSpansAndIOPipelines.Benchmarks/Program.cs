@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Running;
+using ExploringSpansAndIOPipelines.Benchmarks.Comparisions;
 
 namespace ExploringSpansAndIOPipelines.Benchmarks
 {
@@ -6,7 +7,7 @@ namespace ExploringSpansAndIOPipelines.Benchmarks
     {
         private static void Main()
         {
-            BenchmarkRunner.Run<ParsersComparision>();
+            BenchmarkRunner.Run<LineParsersComparision>();
         }
     }
 }
