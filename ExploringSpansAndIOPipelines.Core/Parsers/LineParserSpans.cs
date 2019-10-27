@@ -10,7 +10,12 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
         public Videogame Parse(string line)
         {
             var span = line.AsSpan();
-            
+
+            return Parse(span);
+        }
+
+        public static Videogame Parse(ReadOnlySpan<char> span)
+        {
             var scanned = -1;
             var position = 0;
             
@@ -31,7 +36,7 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
                 HasMultiplayer = bool.Parse(hasMultiplayer) 
             };
         }
-        
+
         private static ReadOnlySpan<char> ParseChunk(ref ReadOnlySpan<char> span, ref int scanned, ref int position)
         {
             scanned += position + 1;
