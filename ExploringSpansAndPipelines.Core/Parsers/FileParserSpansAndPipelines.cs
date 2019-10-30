@@ -68,14 +68,7 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
             Span<byte> span = stackalloc byte[(int)sequence.Length];
 #endif
             sequence.CopyTo(span);
-            
-#if DEBUG
-            Span<char> chars = new char[span.Length];
-#else 
-            Span<char> chars = stackalloc char[span.Length];
-#endif    
-            Encoding.UTF8.GetChars(span, chars);
-                
+
             return Parse(span);
         }
 
