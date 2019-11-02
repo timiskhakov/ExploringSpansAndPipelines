@@ -16,6 +16,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Update="Assets\really-long-line.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <None Update="Assets\TestData.psv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
