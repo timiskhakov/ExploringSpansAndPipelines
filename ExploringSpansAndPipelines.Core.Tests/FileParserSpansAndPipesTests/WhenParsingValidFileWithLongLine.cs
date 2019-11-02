@@ -38,19 +38,17 @@ namespace ExploringSpansAndIOPipelines.Core.Tests.FileParserSpansAndPipesTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public async Task ShouldReturnVideogames()
         {
             // Arrange
             var fileParserSpansAndPipes = new FileParserSpansAndPipelines();
 
-            // Act
-            var videogames = await fileParserSpansAndPipes.Parse(_file);
-
-            // Assert
-            CollectionAssert.AreEqual(_expected, videogames, new RecursiveComparer());
+            // Act and expect an exception
+            await fileParserSpansAndPipes.Parse(_file);
         }
 
-        private Videogame[] CreateExpected(string longLine) => new[]
+        private static Videogame[] CreateExpected(string longLine) => new[]
         {
             new Videogame
             {
@@ -72,7 +70,7 @@ namespace ExploringSpansAndIOPipelines.Core.Tests.FileParserSpansAndPipesTests
             },
         };
 
-        private async Task CreateFile(string file, IEnumerable<Videogame> videogames)
+        private static async Task CreateFile(string file, IEnumerable<Videogame> videogames)
         {
             var content = new StringBuilder();
             foreach (var videogame in videogames)
@@ -83,7 +81,7 @@ namespace ExploringSpansAndIOPipelines.Core.Tests.FileParserSpansAndPipesTests
             await File.WriteAllTextAsync(file, content.ToString());
         }
 
-        private void DeleteFile(string file)
+        private static void DeleteFile(string file)
         {
             if (File.Exists(file))
             {

@@ -12,6 +12,8 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
 {
     public class FileParserSpansAndPipelines : IFileParser
     {
+        private const int LengthLimit = 256;
+        
         public async Task<List<Videogame>> Parse(string file)
         {
             var result = new List<Videogame>();
@@ -61,12 +63,14 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
             {
                 return Parse(sequence.FirstSpan);
             }
+
+            var length = (int) sequence.Length;
+            if (length > LengthLimit)
+            {
+                throw new ArgumentException($"Line has a length exceeding the limit: {length}");
+            }
             
-#if DEBUG
-            Span<byte> span = new byte[sequence.Length];
-#else 
-            Span<byte> span = stackalloc byte[(int)sequence.Length];
-#endif
+            Span<byte> span = stackalloc byte[length];
             sequence.CopyTo(span);
 
             return Parse(span);
@@ -74,11 +78,7 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
 
         private static Videogame Parse(ReadOnlySpan<byte> bytes)
         {
-#if DEBUG
-            Span<char> chars = new char[bytes.Length];
-#else
             Span<char> chars = stackalloc char[bytes.Length];
-#endif
             Encoding.UTF8.GetChars(bytes, chars);
                 
             return LineParserSpans.Parse(chars);
