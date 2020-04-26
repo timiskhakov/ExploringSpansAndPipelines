@@ -19,7 +19,13 @@ namespace ExploringSpansAndIOPipelines.Core.Generators
         
         public static async Task Generate(string file, int numberOfLines)
         {
-            await File.WriteAllLinesAsync(file, CreateContent(numberOfLines), Encoding.UTF8);
+            var sb = new StringBuilder();
+            foreach (var line in CreateContent(numberOfLines))
+            {
+                sb.Append($"{line}\n");
+            }
+
+            await File.WriteAllTextAsync(file, sb.ToString());
         }
 
         private static IEnumerable<string> CreateContent(int numberOfLines)
