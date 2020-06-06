@@ -15,6 +15,7 @@ namespace ExploringSpansAndIOPipelines.Benchmarks.Comparisons
         private IFileParser _fileParser;
         private IFileParser _fileParserSpans;
         private IFileParser _fileParserSpansAndPipes;
+        private IFileParser _fileParserImproved;
 
         [GlobalSetup]
         public void Setup()
@@ -25,6 +26,7 @@ namespace ExploringSpansAndIOPipelines.Benchmarks.Comparisons
             _fileParser = new FileParser(new LineParser());
             _fileParserSpans = new FileParser(new LineParserSpans());
             _fileParserSpansAndPipes = new FileParserSpansAndPipelines();
+            _fileParserImproved = new FileParserImproved();
         }
         
         [Benchmark]
@@ -43,6 +45,12 @@ namespace ExploringSpansAndIOPipelines.Benchmarks.Comparisons
         public async Task FileParserSpansAndPipes()
         {
             (await _fileParserSpansAndPipes.Parse(_file)).Consume(_consumer);
+        }
+        
+        [Benchmark]
+        public async Task FileParserImproved()
+        {
+            (await _fileParserImproved.Parse(_file)).Consume(_consumer);
         }
     }
 }
