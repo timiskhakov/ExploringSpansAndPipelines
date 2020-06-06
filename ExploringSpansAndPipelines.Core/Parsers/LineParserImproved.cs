@@ -12,7 +12,7 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
             if (!Utf8Parser.TryParse(bytes, out Guid id, out var idConsumed)) throw new ArgumentException(nameof(bytes));
             bytes = bytes.Slice(idConsumed + 1);
             
-            var namePosition = bytes.IndexOf((byte)'|');
+            var namePosition = bytes.IndexOf((byte) '|');
             var name = Encoding.UTF8.GetString(bytes.Slice(0, namePosition));
             bytes = bytes.Slice(namePosition + 1);
             
