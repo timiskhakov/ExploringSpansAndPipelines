@@ -39,6 +39,9 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
             };
         }
 
+        // Borrowed from here:
+        // https://github.com/dotnet/runtime/blob/4f9ae42d861fcb4be2fcd5d3d55d5f227d30e723/src/libraries/System.Private.CoreLib/src/System/Buffers/Text/Utf8Parser/Utf8Parser.Date.O.cs
+        // TODO: Add proper validation
         private static DateTime ParseDateTime(ReadOnlySpan<byte> source)
         {
             var digit1 = source[0] - 48u; // '0'
