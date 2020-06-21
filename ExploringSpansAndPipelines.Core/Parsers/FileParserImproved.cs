@@ -24,7 +24,7 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
                 var buffer = read.Buffer;
                 while (TryReadLine(ref buffer, out var sequence))
                 {
-                    var videogame = ParseSequence(sequence);
+                    var videogame = ProcessSequence(sequence);
                     result.Add(videogame);
                 }
                     
@@ -53,7 +53,7 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
             return true;
         }
 
-        private static Videogame ParseSequence(in ReadOnlySequence<byte> sequence)
+        private static Videogame ProcessSequence(in ReadOnlySequence<byte> sequence)
         {
             var array = ArrayPool.Rent((int) sequence.Length);
             try
