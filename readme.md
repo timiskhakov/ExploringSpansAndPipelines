@@ -1,3 +1,3 @@
-# Exploring `Span<T>` and `Pipelines`
-
-This repo is a part of this blog post: https://timiskhakov.github.io/posts/exploring-spans-and-pipelines.
+This repo is part of the following blog posts:
+- [Exploring Spans and Pipelines](https://timiskhakov.github.io/posts/exploring-spans-and-pipelines)
+- [Exploring Spans and Pipelines Revisited](https://timiskhakov.github.io/posts/exploring-spans-and-pipelines-revisited)
