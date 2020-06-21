@@ -9,33 +9,56 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
     {
         public static Videogame Parse(ReadOnlySpan<byte> bytes)
         {
-            if (!Utf8Parser.TryParse(bytes, out Guid id, out var idConsumed)) throw new ArgumentException(nameof(bytes));
-            bytes = bytes.Slice(idConsumed + 1);
-            
-            var namePosition = bytes.IndexOf((byte) '|');
-            var name = Encoding.UTF8.GetString(bytes.Slice(0, namePosition));
-            bytes = bytes.Slice(namePosition + 1);
-            
-            if (!Utf8Parser.TryParse(bytes, out int genre, out var genreConsumed)) throw new ArgumentException(nameof(bytes));
-            bytes = bytes.Slice(genreConsumed + 1);
-
-            if (!TryParseExactDateTime(bytes, out var releaseDate, out var releaseDateConsumed)) throw new ArgumentException(nameof(bytes));
-            bytes = bytes.Slice(releaseDateConsumed + 1);
-
-            if (!Utf8Parser.TryParse(bytes, out int rating, out var ratingConsumed)) throw new ArgumentException(nameof(bytes));
-            bytes = bytes.Slice(ratingConsumed + 1);
-            
-            if (!Utf8Parser.TryParse(bytes, out bool hasMultiplayer, out _)) throw new ArgumentException(nameof(bytes));
-            
             return new Videogame
             {
-                Id = id,
-                Name = name,
-                Genre = (Genres) genre,
-                ReleaseDate = releaseDate,
-                Rating = rating,
-                HasMultiplayer = hasMultiplayer
+                Id = ParseGuid(ref bytes),
+                Name = ParseString(ref bytes),
+                Genre = (Genres) ParseInt(ref bytes),
+                ReleaseDate = ParseDateTime(ref bytes),
+                Rating = ParseInt(ref bytes),
+                HasMultiplayer = ParseBool(ref bytes)
             };
+        }
+
+        private static Guid ParseGuid(ref ReadOnlySpan<byte> bytes)
+        {
+            if (!Utf8Parser.TryParse(bytes, out Guid value, out var consumed)) throw new ArgumentException(nameof(bytes));
+            var advance = consumed + 1;
+            if (bytes.Length >= advance) bytes = bytes.Slice(advance);
+            return value;
+        }
+
+        private static string ParseString(ref ReadOnlySpan<byte> bytes)
+        {
+            var position = bytes.IndexOf((byte) '|');
+            var value = Encoding.UTF8.GetString(bytes.Slice(0, position));
+            var advance = position + 1;
+            if (bytes.Length >= advance) bytes = bytes.Slice(advance);
+            return value;
+        }
+
+        private static int ParseInt(ref ReadOnlySpan<byte> bytes)
+        {
+            if (!Utf8Parser.TryParse(bytes, out int value, out var consumed)) throw new ArgumentException(nameof(bytes));
+            var advance = consumed + 1;
+            if (bytes.Length >= advance) bytes = bytes.Slice(advance);
+            return value;
+        }
+
+        private static DateTime ParseDateTime(ref ReadOnlySpan<byte> bytes)
+        {
+            if (!TryParseExactDateTime(bytes, out var dateTime, out var consumed)) throw new ArgumentException(nameof(bytes));
+            var advance = consumed + 1;
+            if (bytes.Length >= advance) bytes = bytes.Slice(advance);
+            return dateTime;
+        }
+
+        private static bool ParseBool(ref ReadOnlySpan<byte> bytes)
+        {
+            if (!Utf8Parser.TryParse(bytes, out bool value, out var consumed)) throw new ArgumentException(nameof(bytes));
+            var advance = consumed + 1;
+            if (bytes.Length >= advance) bytes = bytes.Slice(advance);
+            return value;
         }
 
         // Borrowed from here:

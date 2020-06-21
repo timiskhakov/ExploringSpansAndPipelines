@@ -55,11 +55,12 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
 
         private static Videogame ProcessSequence(in ReadOnlySequence<byte> sequence)
         {
-            var array = ArrayPool.Rent((int) sequence.Length);
+            var length = (int) sequence.Length;
+            var array = ArrayPool.Rent(length);
             try
             {
                 sequence.CopyTo(array);
-                return LineParserImproved.Parse(array.AsSpan());
+                return LineParserImproved.Parse(array.AsSpan().Slice(0, length));
             }
             finally
             {
