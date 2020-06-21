@@ -15,25 +15,22 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
         public async Task<List<Videogame>> Parse(string file)
         {
             var result = new List<Videogame>();
-
-            using (var stream = File.OpenRead(file))
+            await using var stream = File.OpenRead(file);
+            var reader = PipeReader.Create(stream);
+            while (true)
             {
-                var reader = PipeReader.Create(stream);
-                while (true)
+                var read = await reader.ReadAsync();
+                var buffer = read.Buffer;
+                while (TryReadLine(ref buffer, out var sequence))
                 {
-                    var read = await reader.ReadAsync();
-                    var buffer = read.Buffer;
-                    while (TryReadLine(ref buffer, out var sequence))
-                    {
-                        var videogame = ParseSequence(sequence);
-                        result.Add(videogame);
-                    }
+                    var videogame = ParseSequence(sequence);
+                    result.Add(videogame);
+                }
                     
-                    reader.AdvanceTo(buffer.Start, buffer.End);
-                    if (read.IsCompleted)
-                    {
-                        break;
-                    }
+                reader.AdvanceTo(buffer.Start, buffer.End);
+                if (read.IsCompleted)
+                {
+                    break;
                 }
             }
 

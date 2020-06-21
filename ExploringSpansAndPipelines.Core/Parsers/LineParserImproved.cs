@@ -19,9 +19,8 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
             if (!Utf8Parser.TryParse(bytes, out int genre, out var genreConsumed)) throw new ArgumentException(nameof(bytes));
             bytes = bytes.Slice(genreConsumed + 1);
 
-            var releaseDatePosition = bytes.IndexOf((byte) '|');
-            var releaseDate = ParseDateTime(bytes.Slice(0, releaseDatePosition));
-            bytes = bytes.Slice(releaseDatePosition + 1);
+            if (!TryParseExactDateTime(bytes, out var releaseDate, out var releaseDateConsumed)) throw new ArgumentException(nameof(bytes));
+            bytes = bytes.Slice(releaseDateConsumed + 1);
 
             if (!Utf8Parser.TryParse(bytes, out int rating, out var ratingConsumed)) throw new ArgumentException(nameof(bytes));
             bytes = bytes.Slice(ratingConsumed + 1);
@@ -41,27 +40,41 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
 
         // Borrowed from here:
         // https://github.com/dotnet/runtime/blob/4f9ae42d861fcb4be2fcd5d3d55d5f227d30e723/src/libraries/System.Private.CoreLib/src/System/Buffers/Text/Utf8Parser/Utf8Parser.Date.O.cs
-        // TODO: Add proper validation
-        private static DateTime ParseDateTime(ReadOnlySpan<byte> source)
+        private static bool TryParseExactDateTime(ReadOnlySpan<byte> bytes, out DateTime value, out int consumed)
         {
-            var digit1 = source[0] - 48u; // '0'
-            var digit2 = source[1] - 48u; // '0'
-            var digit3 = source[2] - 48u; // '0'
-            var digit4 = source[3] - 48u; // '0'
+            value = default;
+            consumed = 0;
+            
+            if (bytes.Length < 10) return false;
+
+            var digit1 = bytes[0] - 48u; // 48u == '0'
+            var digit2 = bytes[1] - 48u;
+            var digit3 = bytes[2] - 48u;
+            var digit4 = bytes[3] - 48u;
+            if (digit1 > 9 || digit2 > 9 || digit3 > 9 || digit4 > 9) return false;
 
             var year = 1000 * digit1 + 100 * digit2 + 10 * digit3 + digit4;
             
-            var digit5 = source[5] - 48u; // '0'
-            var digit6 = source[6] - 48u; // '0'
+            if (bytes[4] != (byte)'-') return false;
+
+            var digit5 = bytes[5] - 48u;
+            var digit6 = bytes[6] - 48u;
+            if (digit5 > 9 || digit6 > 9) return false;
 
             var month = 10 * digit5 + digit6;
             
-            var digit8 = source[8] - 48u; // '0'
-            var digit9 = source[9] - 48u; // '0'
+            if (bytes[7] != (byte)'-') return false;
+            
+            var digit8 = bytes[8] - 48u;
+            var digit9 = bytes[9] - 48u;
             
             var day = 10 * digit8 + digit9;
+            if (digit8 > 9 || digit9 > 9) return false;
             
-            return new DateTime((int) year, (int) month, (int) day);
+            value = new DateTime((int) year, (int) month, (int) day, 0, 0, 0, DateTimeKind.Utc);
+            consumed = 10;
+
+            return true;
         }
     }
 }
