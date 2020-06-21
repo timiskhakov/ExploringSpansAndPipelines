@@ -1,3 +1,4 @@
+using System;
 using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
@@ -52,13 +53,13 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
             return true;
         }
 
-        private static Videogame ParseSequence(ReadOnlySequence<byte> sequence)
+        private static Videogame ParseSequence(in ReadOnlySequence<byte> sequence)
         {
             var array = ArrayPool.Rent((int) sequence.Length);
             try
             {
                 sequence.CopyTo(array);
-                return LineParserImproved.Parse(array);
+                return LineParserImproved.Parse(array.AsSpan());
             }
             finally
             {

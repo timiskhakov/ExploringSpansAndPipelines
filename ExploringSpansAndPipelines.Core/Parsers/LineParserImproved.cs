@@ -40,7 +40,7 @@ namespace ExploringSpansAndIOPipelines.Core.Parsers
 
         // Borrowed from here:
         // https://github.com/dotnet/runtime/blob/4f9ae42d861fcb4be2fcd5d3d55d5f227d30e723/src/libraries/System.Private.CoreLib/src/System/Buffers/Text/Utf8Parser/Utf8Parser.Date.O.cs
-        private static bool TryParseExactDateTime(ReadOnlySpan<byte> bytes, out DateTime value, out int consumed)
+        private static bool TryParseExactDateTime(in ReadOnlySpan<byte> bytes, out DateTime value, out int consumed)
         {
             value = default;
             consumed = 0;
