@@ -1,14 +1,13 @@
-﻿using ExploringSpansAndIOPipelines.Core.Models;
-using ExploringSpansAndIOPipelines.Core.Parsers;
-using ExploringSpansAndIOPipelines.Core.Tests.Comparers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using ExploringSpansAndPipelines.Benchmarks.Models;
+using ExploringSpansAndPipelines.Benchmarks.Parsers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ExploringSpansAndIOPipelines.Core.Tests.FileParserSpansAndPipesTests
+namespace ExploringSpansAndPipelines.Core.Tests.FileParserSpansAndPipesTests
 {
     [TestClass]
     public class WhenParsingValidFileWithLongLine

@@ -1,4 +1,4 @@
-namespace ExploringSpansAndIOPipelines.Core.Models
+namespace ExploringSpansAndPipelines.Benchmarks.Models
 {
     public enum Genres
     {

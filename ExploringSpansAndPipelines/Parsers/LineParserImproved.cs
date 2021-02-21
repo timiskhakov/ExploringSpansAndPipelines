@@ -1,9 +1,9 @@
 using System;
 using System.Buffers.Text;
 using System.Text;
-using ExploringSpansAndIOPipelines.Core.Models;
+using ExploringSpansAndPipelines.Benchmarks.Models;
 
-namespace ExploringSpansAndIOPipelines.Core.Parsers
+namespace ExploringSpansAndPipelines.Benchmarks.Parsers
 {
     public static class LineParserImproved
     {

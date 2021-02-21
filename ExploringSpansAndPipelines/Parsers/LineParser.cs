@@ -1,9 +1,9 @@
 using System;
 using System.Globalization;
-using ExploringSpansAndIOPipelines.Core.Interfaces;
-using ExploringSpansAndIOPipelines.Core.Models;
+using ExploringSpansAndPipelines.Benchmarks.Interfaces;
+using ExploringSpansAndPipelines.Benchmarks.Models;
 
-namespace ExploringSpansAndIOPipelines.Core.Parsers
+namespace ExploringSpansAndPipelines.Benchmarks.Parsers
 {
     public class LineParser : ILineParser
     {

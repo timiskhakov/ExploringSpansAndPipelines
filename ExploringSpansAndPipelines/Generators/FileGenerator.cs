@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ExploringSpansAndIOPipelines.Core.Models;
+using ExploringSpansAndPipelines.Benchmarks.Models;
 
-namespace ExploringSpansAndIOPipelines.Core.Generators
+namespace ExploringSpansAndPipelines.Benchmarks.Generators
 {
     public static class FileGenerator
     {

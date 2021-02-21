@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipelines;
 using System.Threading.Tasks;
-using ExploringSpansAndIOPipelines.Core.Interfaces;
-using ExploringSpansAndIOPipelines.Core.Models;
+using ExploringSpansAndPipelines.Benchmarks.Interfaces;
+using ExploringSpansAndPipelines.Benchmarks.Models;
 
-namespace ExploringSpansAndIOPipelines.Core.Parsers
+namespace ExploringSpansAndPipelines.Benchmarks.Parsers
 {
     public class FileParserImproved : IFileParser
     {

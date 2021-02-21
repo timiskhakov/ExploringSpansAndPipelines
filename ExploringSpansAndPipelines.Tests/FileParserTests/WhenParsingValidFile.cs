@@ -1,11 +1,11 @@
 using System.IO;
 using System.Threading.Tasks;
-using ExploringSpansAndIOPipelines.Core.Parsers;
-using ExploringSpansAndIOPipelines.Core.Tests.Comparers;
-using ExploringSpansAndIOPipelines.Core.Tests.Data;
+using ExploringSpansAndPipelines.Benchmarks.Parsers;
+using ExploringSpansAndPipelines.Core.Tests.Comparers;
+using ExploringSpansAndPipelines.Core.Tests.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ExploringSpansAndIOPipelines.Core.Tests.FileParserTests
+namespace ExploringSpansAndPipelines.Core.Tests.FileParserTests
 {
     [TestClass]
     public class WhenParsingValidFile

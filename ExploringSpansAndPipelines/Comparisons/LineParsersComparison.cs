@@ -1,8 +1,8 @@
 using BenchmarkDotNet.Attributes;
-using ExploringSpansAndIOPipelines.Core.Interfaces;
-using ExploringSpansAndIOPipelines.Core.Parsers;
+using ExploringSpansAndPipelines.Benchmarks.Interfaces;
+using ExploringSpansAndPipelines.Benchmarks.Parsers;
 
-namespace ExploringSpansAndIOPipelines.Benchmarks.Comparisons
+namespace ExploringSpansAndPipelines.Benchmarks.Comparisons
 {
     [MemoryDiagnoser]
     public class LineParsersComparison

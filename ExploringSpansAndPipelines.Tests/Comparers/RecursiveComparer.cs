@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExploringSpansAndIOPipelines.Core.Tests.Comparers
+namespace ExploringSpansAndPipelines.Core.Tests.Comparers
 {
     internal class RecursiveComparer : IComparer
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace ExploringSpansAndIOPipelines.Core.Models
+namespace ExploringSpansAndPipelines.Benchmarks.Models
 {
     public class Videogame
     {

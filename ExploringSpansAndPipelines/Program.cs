@@ -1,7 +1,7 @@
 ﻿using BenchmarkDotNet.Running;
-using ExploringSpansAndIOPipelines.Benchmarks.Comparisons;
+using ExploringSpansAndPipelines.Benchmarks.Comparisons;
 
-namespace ExploringSpansAndIOPipelines.Benchmarks
+namespace ExploringSpansAndPipelines.Benchmarks
 {
     internal static class Program
     {

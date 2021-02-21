@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
-using ExploringSpansAndIOPipelines.Core.Models;
+using ExploringSpansAndPipelines.Benchmarks.Models;
 
-namespace ExploringSpansAndIOPipelines.Core.Tests.Data
+namespace ExploringSpansAndPipelines.Core.Tests.Data
 {
     internal static class TestData
     {
