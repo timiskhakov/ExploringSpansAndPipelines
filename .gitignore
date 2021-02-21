@@ -71,4 +71,5 @@ chrome-user-data
 *.sublime-workspace
 .idea
 *.iml
-ExploringMLNet.RottenTomatoes/Data/reviews.txt
+
+ExploringSpansAndPipelines/BenchmarkDotNet.Artifacts
