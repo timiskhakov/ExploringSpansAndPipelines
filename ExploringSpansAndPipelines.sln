@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringSpansAndPipelines.Core", "ExploringSpansAndPipelines.Core\ExploringSpansAndPipelines.Core.csproj", "{6833AF25-E2C5-4668-8028-22FE73BE5BCB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringSpansAndPipelines.Tests", "ExploringSpansAndPipelines.Tests\ExploringSpansAndPipelines.Tests.csproj", "{57E9EA95-FDAC-4D52-AEA1-DE6E59D2324E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringSpansAndPipelines.Core.Tests", "ExploringSpansAndPipelines.Core.Tests\ExploringSpansAndPipelines.Core.Tests.csproj", "{57E9EA95-FDAC-4D52-AEA1-DE6E59D2324E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringSpansAndPipelines.Benchmarks", "ExploringSpansAndPipelines.Benchmarks\ExploringSpansAndPipelines.Benchmarks.csproj", "{C0A792D7-1BF3-4C42-9ECF-C0748B642565}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringSpansAndPipelines", "ExploringSpansAndPipelines\ExploringSpansAndPipelines.csproj", "{C0A792D7-1BF3-4C42-9ECF-C0748B642565}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,10 +10,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6833AF25-E2C5-4668-8028-22FE73BE5BCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6833AF25-E2C5-4668-8028-22FE73BE5BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6833AF25-E2C5-4668-8028-22FE73BE5BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6833AF25-E2C5-4668-8028-22FE73BE5BCB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57E9EA95-FDAC-4D52-AEA1-DE6E59D2324E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{57E9EA95-FDAC-4D52-AEA1-DE6E59D2324E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57E9EA95-FDAC-4D52-AEA1-DE6E59D2324E}.Release|Any CPU.ActiveCfg = Release|Any CPU

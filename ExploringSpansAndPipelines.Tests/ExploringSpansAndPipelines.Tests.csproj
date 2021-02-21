@@ -2,13 +2,13 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>ExploringSpansAndPipelines.Core.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
-        <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
-        <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
-        <PackageReference Include="coverlet.collector" Version="1.0.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+        <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
+        <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ExploringSpansAndPipelines.Core\ExploringSpansAndPipelines.Core.csproj" />
+      <ProjectReference Include="..\ExploringSpansAndPipelines\ExploringSpansAndPipelines.csproj" />
     </ItemGroup>
 
 </Project>
