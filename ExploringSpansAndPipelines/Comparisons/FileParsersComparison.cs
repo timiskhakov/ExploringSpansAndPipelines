@@ -2,10 +2,10 @@ using System.IO;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Engines;
-using ExploringSpansAndPipelines.Benchmarks.Interfaces;
-using ExploringSpansAndPipelines.Benchmarks.Parsers;
+using ExploringSpansAndPipelines.Interfaces;
+using ExploringSpansAndPipelines.Parsers;
 
-namespace ExploringSpansAndPipelines.Benchmarks.Comparisons
+namespace ExploringSpansAndPipelines.Comparisons
 {
     [MemoryDiagnoser]
     public class FileParsersComparison

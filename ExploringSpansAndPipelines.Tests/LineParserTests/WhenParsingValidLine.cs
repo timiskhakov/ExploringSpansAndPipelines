@@ -1,10 +1,10 @@
-using ExploringSpansAndPipelines.Benchmarks.Interfaces;
-using ExploringSpansAndPipelines.Benchmarks.Parsers;
-using ExploringSpansAndPipelines.Core.Tests.Comparers;
-using ExploringSpansAndPipelines.Core.Tests.Data;
+using ExploringSpansAndPipelines.Interfaces;
+using ExploringSpansAndPipelines.Parsers;
+using ExploringSpansAndPipelines.Tests.Comparers;
+using ExploringSpansAndPipelines.Tests.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ExploringSpansAndPipelines.Core.Tests.LineParserTests
+namespace ExploringSpansAndPipelines.Tests.LineParserTests
 {
     [TestClass]
     public class WhenParsingValidLine

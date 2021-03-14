@@ -1,6 +1,6 @@
-using ExploringSpansAndPipelines.Benchmarks.Models;
+using ExploringSpansAndPipelines.Models;
 
-namespace ExploringSpansAndPipelines.Benchmarks.Interfaces
+namespace ExploringSpansAndPipelines.Interfaces
 {
     public interface ILineParser
     {

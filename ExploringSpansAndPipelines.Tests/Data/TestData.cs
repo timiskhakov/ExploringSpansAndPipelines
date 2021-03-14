@@ -1,7 +1,7 @@
 using System;
-using ExploringSpansAndPipelines.Benchmarks.Models;
+using ExploringSpansAndPipelines.Models;
 
-namespace ExploringSpansAndPipelines.Core.Tests.Data
+namespace ExploringSpansAndPipelines.Tests.Data
 {
     internal static class TestData
     {
