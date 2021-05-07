@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExploringSpansAndPipelines.Core.Tests.Comparers
+namespace ExploringSpansAndPipelines.Tests.Comparers
 {
     internal class RecursiveComparer : IComparer
     {
@@ -47,15 +47,12 @@ namespace ExploringSpansAndPipelines.Core.Tests.Comparers
                 return 0;
             }
 
-            switch (x)
+            return x switch
             {
-                case IComparable xComparable:
-                    return xComparable.CompareTo(y);
-                case IEnumerable xEnumerable:
-                    return CompareEnumerable(xEnumerable, (IEnumerable)y);
-                default:
-                    return CompareProperties(x, y);
-            }
+                IComparable xComparable => xComparable.CompareTo(y),
+                IEnumerable xEnumerable => CompareEnumerable(xEnumerable, (IEnumerable) y),
+                _ => CompareProperties(x, y)
+            };
         }
 
         private int CompareEnumerable(IEnumerable x, IEnumerable y)

@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-        <RootNamespace>ExploringSpansAndPipelines.Core.Tests</RootNamespace>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>ExploringSpansAndPipelines.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
-        <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
-        <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+        <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
+        <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
     </ItemGroup>
 
     <ItemGroup>

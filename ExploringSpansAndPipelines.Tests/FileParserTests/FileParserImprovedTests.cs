@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using ExploringSpansAndPipelines.Benchmarks.Models;
-using ExploringSpansAndPipelines.Benchmarks.Parsers;
-using ExploringSpansAndPipelines.Core.Tests.Comparers;
-using ExploringSpansAndPipelines.Core.Tests.Data;
+using ExploringSpansAndPipelines.Models;
+using ExploringSpansAndPipelines.Parsers;
+using ExploringSpansAndPipelines.Tests.Comparers;
+using ExploringSpansAndPipelines.Tests.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ExploringSpansAndPipelines.Core.Tests.FileParserTests
+namespace ExploringSpansAndPipelines.Tests.FileParserTests
 {
     [TestClass]
     public class FileParserImprovedTests

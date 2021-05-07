@@ -4,18 +4,18 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ExploringSpansAndPipelines.Benchmarks.Models;
+using ExploringSpansAndPipelines.Models;
 
-namespace ExploringSpansAndPipelines.Benchmarks.Generators
+namespace ExploringSpansAndPipelines.Generators
 {
     public static class FileGenerator
     {
-        private static readonly Random Random = new Random();
+        private static readonly Random Random = new();
         private static readonly char[] AllowedChars =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,-:".ToCharArray();
         private static readonly Array Genres = Enum.GetValues(typeof(Genres));
-        private static readonly DateTime MinReleaseDate = new DateTime(1990, 1, 1);
-        private static readonly DateTime MaxReleaseDate = new DateTime(2020, 1, 1);
+        private static readonly DateTime MinReleaseDate = new(1990, 1, 1);
+        private static readonly DateTime MaxReleaseDate = new(2020, 1, 1);
         
         public static async Task Generate(string file, int numberOfLines)
         {
@@ -51,13 +51,12 @@ namespace ExploringSpansAndPipelines.Benchmarks.Generators
             return string.Join(' ', words);
         }
 
-        private static string CreateRandomWord() =>
-            new string(Enumerable
-                .Repeat(AllowedChars, Random.Next(5, 15))
-                .Select(x => x[Random.Next(x.Length)])
-                .ToArray());
+        private static string CreateRandomWord() => new(Enumerable
+            .Repeat(AllowedChars, Random.Next(5, 15))
+            .Select(x => x[Random.Next(x.Length)])
+            .ToArray());
         
-        private static Genres GetRandomGenre() => (Genres)Genres.GetValue(Random.Next(Genres.Length));
+        private static Genres GetRandomGenre() => (Genres)Genres.GetValue(Random.Next(Genres.Length))!;
 
         private static DateTime GetRandomDate()
         {

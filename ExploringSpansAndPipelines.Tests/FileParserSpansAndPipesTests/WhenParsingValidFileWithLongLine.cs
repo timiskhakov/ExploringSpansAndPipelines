@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using ExploringSpansAndPipelines.Benchmarks.Models;
-using ExploringSpansAndPipelines.Benchmarks.Parsers;
+using ExploringSpansAndPipelines.Models;
+using ExploringSpansAndPipelines.Parsers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ExploringSpansAndPipelines.Core.Tests.FileParserSpansAndPipesTests
+namespace ExploringSpansAndPipelines.Tests.FileParserSpansAndPipesTests
 {
     [TestClass]
     public class WhenParsingValidFileWithLongLine

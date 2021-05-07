@@ -1,13 +1,13 @@
 using System;
-using ExploringSpansAndPipelines.Benchmarks.Models;
+using ExploringSpansAndPipelines.Models;
 
-namespace ExploringSpansAndPipelines.Core.Tests.Data
+namespace ExploringSpansAndPipelines.Tests.Data
 {
     internal static class TestData
     {
         internal static readonly Videogame[] Videogames = 
         {
-            new Videogame
+            new()
             {
                 Id = Guid.Parse("38e27dea-1d7d-4279-be97-e29d53a8af89"),
                 Name = "F.E.A.R.",
@@ -16,7 +16,7 @@ namespace ExploringSpansAndPipelines.Core.Tests.Data
                 Rating = 90,
                 HasMultiplayer = false
             },
-            new Videogame
+            new()
             {
                 Id = Guid.Parse("6f3e9012-5d8c-43c4-b0d0-894fbff5a521"),
                 Name = "Football Manager 2020",
@@ -25,7 +25,7 @@ namespace ExploringSpansAndPipelines.Core.Tests.Data
                 Rating = 80,
                 HasMultiplayer = true
             },
-            new Videogame
+            new()
             {
                 Id = Guid.Parse("d79bbb41-f66a-46e9-b4d3-72295cca8324"),
                 Name = "The Witcher 3: Wild Hunt",

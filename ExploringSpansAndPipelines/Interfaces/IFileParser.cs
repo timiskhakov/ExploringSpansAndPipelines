@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ExploringSpansAndPipelines.Benchmarks.Models;
+using ExploringSpansAndPipelines.Models;
 
-namespace ExploringSpansAndPipelines.Benchmarks.Interfaces
+namespace ExploringSpansAndPipelines.Interfaces
 {
     public interface IFileParser
     {

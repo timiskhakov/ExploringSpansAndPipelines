@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipelines;
 using System.Threading.Tasks;
-using ExploringSpansAndPipelines.Benchmarks.Interfaces;
-using ExploringSpansAndPipelines.Benchmarks.Models;
+using ExploringSpansAndPipelines.Interfaces;
+using ExploringSpansAndPipelines.Models;
 
-namespace ExploringSpansAndPipelines.Benchmarks.Parsers
+namespace ExploringSpansAndPipelines.Parsers
 {
     public class FileParserImproved : IFileParser
     {
@@ -60,7 +60,7 @@ namespace ExploringSpansAndPipelines.Benchmarks.Parsers
             try
             {
                 sequence.CopyTo(array);
-                return LineParserImproved.Parse(array.AsSpan().Slice(0, length));
+                return LineParserImproved.Parse(array.AsSpan()[..length]);
             }
             finally
             {

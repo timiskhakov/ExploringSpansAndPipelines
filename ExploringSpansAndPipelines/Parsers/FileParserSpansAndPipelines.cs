@@ -5,10 +5,10 @@ using System.IO;
 using System.IO.Pipelines;
 using System.Text;
 using System.Threading.Tasks;
-using ExploringSpansAndPipelines.Benchmarks.Interfaces;
-using ExploringSpansAndPipelines.Benchmarks.Models;
+using ExploringSpansAndPipelines.Interfaces;
+using ExploringSpansAndPipelines.Models;
 
-namespace ExploringSpansAndPipelines.Benchmarks.Parsers
+namespace ExploringSpansAndPipelines.Parsers
 {
     public class FileParserSpansAndPipelines : IFileParser
     {
@@ -18,24 +18,22 @@ namespace ExploringSpansAndPipelines.Benchmarks.Parsers
         {
             var result = new List<Videogame>();
 
-            using (var stream = File.OpenRead(file))
+            await using var stream = File.OpenRead(file);
+            var reader = PipeReader.Create(stream);
+            while (true)
             {
-                var reader = PipeReader.Create(stream);
-                while (true)
+                var read = await reader.ReadAsync();
+                var buffer = read.Buffer;
+                while (TryReadLine(ref buffer, out var sequence))
                 {
-                    var read = await reader.ReadAsync();
-                    var buffer = read.Buffer;
-                    while (TryReadLine(ref buffer, out var sequence))
-                    {
-                        var videogame = ProcessSequence(sequence);
-                        result.Add(videogame);
-                    }
+                    var videogame = ProcessSequence(sequence);
+                    result.Add(videogame);
+                }
                     
-                    reader.AdvanceTo(buffer.Start, buffer.End);
-                    if (read.IsCompleted)
-                    {
-                        break;
-                    }
+                reader.AdvanceTo(buffer.Start, buffer.End);
+                if (read.IsCompleted)
+                {
+                    break;
                 }
             }
 

@@ -1,15 +1,15 @@
 using System;
 using System.Buffers.Text;
 using System.Text;
-using ExploringSpansAndPipelines.Benchmarks.Models;
+using ExploringSpansAndPipelines.Models;
 
-namespace ExploringSpansAndPipelines.Benchmarks.Parsers
+namespace ExploringSpansAndPipelines.Parsers
 {
     public static class LineParserImproved
     {
         public static Videogame Parse(ReadOnlySpan<byte> bytes)
         {
-            return new Videogame
+            return new()
             {
                 Id = ParseGuid(ref bytes),
                 Name = ParseString(ref bytes),
@@ -24,16 +24,16 @@ namespace ExploringSpansAndPipelines.Benchmarks.Parsers
         {
             if (!Utf8Parser.TryParse(bytes, out Guid value, out var consumed)) throw new ArgumentException(nameof(bytes));
             var advance = consumed + 1;
-            if (bytes.Length >= advance) bytes = bytes.Slice(advance);
+            if (bytes.Length >= advance) bytes = bytes[advance..];
             return value;
         }
 
         private static string ParseString(ref ReadOnlySpan<byte> bytes)
         {
             var position = bytes.IndexOf((byte) '|');
-            var value = Encoding.UTF8.GetString(bytes.Slice(0, position));
+            var value = Encoding.UTF8.GetString(bytes[..position]);
             var advance = position + 1;
-            if (bytes.Length >= advance) bytes = bytes.Slice(advance);
+            if (bytes.Length >= advance) bytes = bytes[advance..];
             return value;
         }
 
@@ -41,7 +41,7 @@ namespace ExploringSpansAndPipelines.Benchmarks.Parsers
         {
             if (!Utf8Parser.TryParse(bytes, out int value, out var consumed)) throw new ArgumentException(nameof(bytes));
             var advance = consumed + 1;
-            if (bytes.Length >= advance) bytes = bytes.Slice(advance);
+            if (bytes.Length >= advance) bytes = bytes[advance..];
             return value;
         }
 
@@ -49,7 +49,7 @@ namespace ExploringSpansAndPipelines.Benchmarks.Parsers
         {
             if (!TryParseExactDateTime(bytes, out var dateTime, out var consumed)) throw new ArgumentException(nameof(bytes));
             var advance = consumed + 1;
-            if (bytes.Length >= advance) bytes = bytes.Slice(advance);
+            if (bytes.Length >= advance) bytes = bytes[advance..];
             return dateTime;
         }
 
@@ -57,7 +57,7 @@ namespace ExploringSpansAndPipelines.Benchmarks.Parsers
         {
             if (!Utf8Parser.TryParse(bytes, out bool value, out var consumed)) throw new ArgumentException(nameof(bytes));
             var advance = consumed + 1;
-            if (bytes.Length >= advance) bytes = bytes.Slice(advance);
+            if (bytes.Length >= advance) bytes = bytes[advance..];
             return value;
         }
 

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using ExploringSpansAndPipelines.Benchmarks.Interfaces;
-using ExploringSpansAndPipelines.Benchmarks.Models;
+using ExploringSpansAndPipelines.Interfaces;
+using ExploringSpansAndPipelines.Models;
 
-namespace ExploringSpansAndPipelines.Benchmarks.Parsers
+namespace ExploringSpansAndPipelines.Parsers
 {
     public class FileParser : IFileParser
     {
@@ -19,17 +19,16 @@ namespace ExploringSpansAndPipelines.Benchmarks.Parsers
         {
             var videogames = new List<Videogame>();
 
-            using (var stream = File.OpenRead(file))
-            using (var reader = new StreamReader(stream))
-            {
-                while (!reader.EndOfStream)
-                {
-                    var line = await reader.ReadLineAsync();
-                    var videogame = _lineParser.Parse(line);
-                    videogames.Add(videogame);
-                }    
-            }
+            await using var stream = File.OpenRead(file);
+            using var reader = new StreamReader(stream);
             
+            while (!reader.EndOfStream)
+            {
+                var line = await reader.ReadLineAsync();
+                var videogame = _lineParser.Parse(line);
+                videogames.Add(videogame);
+            }
+
             return videogames;
         }
     }
