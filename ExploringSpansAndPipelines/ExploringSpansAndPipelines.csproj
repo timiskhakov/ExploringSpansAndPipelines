@@ -21,4 +21,10 @@
       </None>
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Interfaces\ILineParser.cs">
+        <DependentUpon>IFileParser.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>
