@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ExploringSpansAndPipelines.Models;
 using ExploringSpansAndPipelines.Parsers;
-using ExploringSpansAndPipelines.Tests.Comparers;
 using ExploringSpansAndPipelines.Tests.Data;
+using KellermanSoftware.CompareNetObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ExploringSpansAndPipelines.Tests.FileParserTests
@@ -14,18 +14,24 @@ namespace ExploringSpansAndPipelines.Tests.FileParserTests
     [TestClass]
     public class FileParserImprovedTests
     {
+        private CompareLogic _compareLogic = null!;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            _compareLogic = new CompareLogic();
+        }
+
         [TestMethod]
         public async Task Parse_RegularLines()
         {
-            // Arrange
             var file = Path.Combine(Directory.GetCurrentDirectory(), "Assets", "TestData.psv");
             var fileParser = new FileParserImproved();
 
-            // Act
             var videogames = await fileParser.Parse(file);
 
-            // Assert
-            CollectionAssert.AreEqual(TestData.Videogames, videogames, new RecursiveComparer());
+            var result = _compareLogic.Compare(TestData.Videogames, videogames.ToArray());
+            Assert.IsTrue(result.AreEqual);
         }
         
         [TestMethod]
@@ -47,7 +53,8 @@ namespace ExploringSpansAndPipelines.Tests.FileParserTests
             DeleteFile(file);
 
             // Assert
-            CollectionAssert.AreEqual(expected, videogames, new RecursiveComparer());
+            var result = _compareLogic.Compare(expected, videogames.ToArray());
+            Assert.IsTrue(result.AreEqual);
         }
         
         private static Videogame[] CreateExpected(string longLine)

@@ -1,7 +1,7 @@
 using ExploringSpansAndPipelines.Interfaces;
 using ExploringSpansAndPipelines.Parsers;
-using ExploringSpansAndPipelines.Tests.Comparers;
 using ExploringSpansAndPipelines.Tests.Data;
+using KellermanSoftware.CompareNetObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ExploringSpansAndPipelines.Tests.LineParserTests
@@ -9,12 +9,14 @@ namespace ExploringSpansAndPipelines.Tests.LineParserTests
     [TestClass]
     public class WhenParsingValidLine
     {
-        private ILineParser _lineParser;
+        private ILineParser _lineParser = null!;
+        private CompareLogic _compareLogic = null!;
         
         [TestInitialize]
         public void Setup()
         {
             _lineParser = new LineParser();
+            _compareLogic = new CompareLogic();
         }
         
         [DataTestMethod]
@@ -23,14 +25,12 @@ namespace ExploringSpansAndPipelines.Tests.LineParserTests
         [DataRow("d79bbb41-f66a-46e9-b4d3-72295cca8324|The Witcher 3: Wild Hunt|3|2015-05-19|95|False", 2)]
         public void ShouldReturnVideogame(string line, int index)
         {
-            // Arrange
             var expected = TestData.Videogames[index];
             
-            // Act
             var actual = _lineParser.Parse(line);
 
-            // Assert
-            CollectionAssert.AreEqual(new[] { expected }, new[] { actual }, new RecursiveComparer());
+            var result = _compareLogic.Compare(expected, actual);
+            Assert.IsTrue(result.AreEqual);
         }
     }
 }
