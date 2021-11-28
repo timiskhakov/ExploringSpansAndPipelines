@@ -14,8 +14,8 @@ namespace ExploringSpansAndPipelines.Tests.FileParserSpansAndPipesTests
     {
         private const string TempPsvName = "temp.psv";
 
-        private string _file;
-        private Videogame[] _expected;
+        private string _file = null!;
+        private Videogame[] _expected = null!;
 
         [TestInitialize]
         public async Task Setup()
