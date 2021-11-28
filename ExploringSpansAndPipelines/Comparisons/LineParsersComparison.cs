@@ -9,8 +9,8 @@ namespace ExploringSpansAndPipelines.Comparisons
     {
         private const string Line = "38e27dea-1d7d-4279-be97-e29d53a8af89|F.E.A.R.|4|2005-10-18|90|False";
         
-        private ILineParser _lineParser;
-        private ILineParser _lineParserSpans;
+        private ILineParser _lineParser = null!;
+        private ILineParser _lineParserSpans = null!;
 
         [GlobalSetup]
         public void Setup()

@@ -11,11 +11,11 @@ namespace ExploringSpansAndPipelines.Comparisons
     public class FileParsersComparison
     {
         private readonly Consumer _consumer = new();
-        private string _file;
-        private IFileParser _fileParser;
-        private IFileParser _fileParserSpans;
-        private IFileParser _fileParserSpansAndPipes;
-        private IFileParser _fileParserImproved;
+        private string _file = null!;
+        private IFileParser _fileParser = null!;
+        private IFileParser _fileParserSpans = null!;
+        private IFileParser _fileParserSpansAndPipes = null!;
+        private IFileParser _fileParserImproved = null!;
 
         [GlobalSetup]
         public void Setup()

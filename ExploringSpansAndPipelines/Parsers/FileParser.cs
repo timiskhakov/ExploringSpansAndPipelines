@@ -25,7 +25,7 @@ namespace ExploringSpansAndPipelines.Parsers
             while (!reader.EndOfStream)
             {
                 var line = await reader.ReadLineAsync();
-                var videogame = _lineParser.Parse(line);
+                var videogame = _lineParser.Parse(line!);
                 videogames.Add(videogame);
             }
 
